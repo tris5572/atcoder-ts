@@ -9,8 +9,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@types/jsdom": "^21.1.1",
     "@types/node": "^20.2.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "jsdom": "^22.1.0"
   }
 }
