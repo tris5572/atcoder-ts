@@ -3,8 +3,20 @@ export default {};
 function solve() {}
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-// input
+// input / output
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+function pr(...v: any) {
+  console.log(...v);
+}
+
+function wr(s: any) {
+  process.stdout.write(String(s));
+}
+
+function epr(...v: any) {
+  console.error(...v);
+}
+
 process.stdin.setEncoding("utf8");
 const __inputValues: string[] = [];
 const reader = require("readline").createInterface({
@@ -19,24 +31,24 @@ reader.on("close", () => {
   solve();
 });
 
-function nextS(): string {
+function str(): string {
   const v = __inputValues[__inputIndex];
   __inputIndex++;
   return v;
 }
 
-function nextN(): number {
-  return Number(nextS());
+function num(): number {
+  return Number(str());
 }
 
-function nextN2(): [number, number] {
-  return [nextN(), nextN()];
+function num2(): [number, number] {
+  return [num(), num()];
 }
 
-function nextNI(n: number): number[] {
+function nums(n: number): number[] {
   const array: number[] = [];
   for (let i = 0; i < n; i++) {
-    array.push(nextN());
+    array.push(num());
   }
   return array;
 }
