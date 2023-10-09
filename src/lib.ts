@@ -131,6 +131,44 @@ function upperBound<T>(
 // console.log(upperBound(b, 4), 8);
 // console.log(upperBound(b, 9), 8);
 
+// Union-Find
+class UnionFind {
+  ROOT = -1;
+  parent: number[];
+  size: number[];
+  constructor(n: number) {
+    this.parent = new Array(n).fill(this.ROOT);
+    this.size = new Array(n).fill(1);
+  }
+  root(x: number): number {
+    if (this.parent[x] === this.ROOT) {
+      return x;
+    }
+    this.parent[x] = this.root(this.parent[x]);
+    return this.parent[x];
+  }
+  isSame(x: number, y: number) {
+    return this.root(x) === this.root(y);
+  }
+  unite(x: number, y: number) {
+    let rootX = this.root(x);
+    let rootY = this.root(y);
+    if (rootX === rootY) {
+      return;
+    }
+    if (this.size[rootX] < this.size[rootY]) {
+      const z = rootX;
+      rootX = rootY;
+      rootY = z;
+    }
+    this.parent[rootY] = rootX;
+    this.size[rootX] += this.size[rootY];
+  }
+  rootCount(): number {
+    return this.parent.filter((v) => v === -1).length;
+  }
+}
+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 // 図形
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
