@@ -53,6 +53,10 @@ function nums(n: number): number[] {
   return array;
 }
 
+function big(): bigint {
+  return BigInt(str());
+}
+
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 // number
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -63,6 +67,34 @@ function bigpow(a: number, b: number): bigint {
     n *= BigInt(a);
   }
   return n;
+}
+
+// 最大公約数
+function gcd(a: number, b: number): number {
+  if (b === 0) {
+    return a;
+  } else {
+    return gcd(b, a % b);
+  }
+}
+
+// 最小公倍数
+function lcm(a: number, b: number): number {
+  return Math.floor(a / gcd(a, b)) * b;
+}
+
+// 最大公約数（BigInt）
+function gcdBig(a: bigint, b: bigint): bigint {
+  if (b === 0n) {
+    return a;
+  } else {
+    return gcdBig(b, a % b);
+  }
+}
+
+// 最小公倍数（BigInt）
+function lcmBig(a: bigint, b: bigint): bigint {
+  return (a / gcdBig(a, b)) * b;
 }
 
 // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
